@@ -11,25 +11,21 @@ import javax.persistence.*;
 @EqualsAndHashCode
 @ToString
 @Entity
-@Table(name = "PERSONAGEM")
-public class Personagem {
+@Table(name = "CARRO")
+public class Carro {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "IDPERSONAGEM")
+    @Column(name = "IDCARRO")
     private Long id;
 
     @NonNull
-    private String nome;
+    private String modelo;
 
     @NonNull
-    private int    idade;
+    private String marca;
 
     @NonNull
-    private String classe;
-
-
+    private int ano;
 
 }
-
-
