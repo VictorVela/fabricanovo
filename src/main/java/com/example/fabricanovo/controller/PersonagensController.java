@@ -26,18 +26,23 @@ public class PersonagensController {
         return  personagemService.findById(id);
     }
 
-
     @PostMapping
     public String create (@RequestBody Personagem personagem){
        return personagemService.saveOrUpdate(personagem);
     }
 
-//    @PutMapping("/{id}")
-//    public String update(@RequestBody Personagem personagem, @PathVariable Long id){
-//        personagem.setId(id);
-//
-//        return personagemService.saveOrUpdate(personagem);
-//    }
+    @RequestMapping("/cadastroPersonagem")
+    public String form(){
+        return "personagem/cadastro";
+    }
+
+
+    @PutMapping("/{id}")
+    public String update(@RequestBody Personagem personagem, @PathVariable Long id){
+        personagem.setId(id);
+
+        return personagemService.saveOrUpdate(personagem);
+    }
 
     @DeleteMapping("/{id}")
     public String delete(@PathVariable Long id){
