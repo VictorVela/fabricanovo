@@ -5,6 +5,7 @@ import com.example.fabricanovo.service.PersonagemService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
@@ -26,29 +27,44 @@ public class PersonagensController {
         return  personagemService.findById(id);
     }
 
-    @PostMapping
-    public String create (@RequestBody Personagem personagem){
-       return personagemService.saveOrUpdate(personagem);
-    }
-
     @RequestMapping("/cadastroPersonagem")
     public String form(){
         return "personagem/cadastro";
     }
 
-
-    @PutMapping("/{id}")
-    public String update(@RequestBody Personagem personagem, @PathVariable Long id){
-        personagem.setId(id);
-
+    @PostMapping
+    public String create (@RequestBody Personagem personagem){
         return personagemService.saveOrUpdate(personagem);
     }
 
-    @DeleteMapping("/{id}")
-    public String delete(@PathVariable Long id){
-        return personagemService.delete(id);
-
+    @PutMapping
+    public String update(@RequestBody Personagem personagem){
+        return personagemService.saveOrUpdate(personagem);
     }
+
+    @DeleteMapping
+    public void delete(@RequestBody @Valid Personagem personagem){
+        personagemService.delete(personagem);
+    }
+
+//    @DeleteMapping
+//    public Void delete(@ResponseBody Personagem personagem){
+//        personagemService.delete(personagem);
+//
+//    }
+
+//    @PutMapping("/{id}")
+//    public String update(@RequestBody Personagem personagem, @PathVariable Long id){
+//        personagem.setId(id);
+//
+//        return personagemService.saveOrUpdate(personagem);
+//    }
+
+//    @DeleteMapping("/{id}")
+//    public String delete(@PathVariable Long id){
+//        return personagemService.delete(id);
+//
+//    }
 
 
 }

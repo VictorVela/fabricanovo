@@ -29,12 +29,17 @@ public class PersonagemService {
         return "não deu boa";
     }
 
-    public String delete(Long id){
-       if(personagemRepository.existsById(id)){
-           personagemRepository.deleteById(id);
-           return !personagemRepository.existsById(id) ? "Objeto deletado" : "Erro no delete";
-       }
-
-        return  "Não deu boa";
+    public void delete(Personagem personagem){
+         personagemRepository.delete(personagem);
     }
+
+//    public String delete(Long id){
+//       if(personagemRepository.existsById(id)){
+//           personagemRepository.deleteById(id);
+//           return !personagemRepository.existsById(id) ? "Objeto deletado" : "Erro no delete";
+//       }
+//
+//        return  "Não deu boa";
+//    }
+
 }
